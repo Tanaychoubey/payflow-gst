@@ -44,19 +44,19 @@ The database schema enforces relational integrity and cascade policies under mul
 
 ```mermaid
 erDiagram
-    BUSINESS ||--o{ USER : "has team"
-    BUSINESS ||--o{ CUSTOMER : "manages"
-    BUSINESS ||--o{ INVOICE : "issues"
-    USER ||--o{ AUDIT_LOG : "triggers"
-    CUSTOMER ||--o{ INVOICE : "billed to"
-    INVOICE ||--|{ INVOICE_ITEM : "contains"
-    INVOICE ||--o{ PAYMENT : "collects"
-    INVOICE ||--o{ REMINDER : "schedules"
+    Business ||--o{ User : "has team"
+    Business ||--o{ Customer : "manages"
+    Business ||--o{ Invoice : "issues"
+    User ||--o{ AuditLog : "triggers"
+    Customer ||--o{ Invoice : "billed to"
+    Invoice ||--|{ InvoiceItem : "contains"
+    Invoice ||--o{ Payment : "collects"
+    Invoice ||--o{ Reminder : "schedules"
 
-    BUSINESS {
+    Business {
         uuid id PK
         varchar name
-        varchar gstin UK
+        varchar gstin
         text address
         varchar phone
         varchar email
@@ -64,19 +64,19 @@ erDiagram
         timestamp createdAt
     }
 
-    USER {
+    User {
         uuid id PK
         uuid businessId FK
         varchar name
-        varchar email UK
+        varchar email
         varchar phone
         varchar passwordHash
-        Role role
+        varchar role
         boolean isActive
         timestamp createdAt
     }
 
-    CUSTOMER {
+    Customer {
         uuid id PK
         uuid businessId FK
         varchar name
@@ -87,22 +87,22 @@ erDiagram
         timestamp createdAt
     }
 
-    INVOICE {
+    Invoice {
         uuid id PK
         uuid businessId FK
         uuid customerId FK
-        varchar invoiceNumber UK
+        varchar invoiceNumber
         date invoiceDate
         date dueDate
         decimal subtotal
         decimal gstAmount
         decimal discountAmount
         decimal totalAmount
-        InvoiceStatus status
+        varchar status
         timestamp createdAt
     }
 
-    INVOICE_ITEM {
+    InvoiceItem {
         uuid id PK
         uuid invoiceId FK
         varchar productName
@@ -112,11 +112,11 @@ erDiagram
         decimal lineTotal
     }
 
-    PAYMENT {
+    Payment {
         uuid id PK
         uuid invoiceId FK
         decimal amount
-        PaymentMethod paymentMethod
+        varchar paymentMethod
         varchar referenceNo
         date paymentDate
         timestamp createdAt
