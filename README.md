@@ -143,6 +143,7 @@ erDiagram
 3. Create a `.env` file inside `/backend` and configure your credentials:
    ```env
    DATABASE_URL="postgresql://postgres:password@localhost:5432/payflow_gst?schema=public"
+   DIRECT_URL="postgresql://postgres:password@localhost:5432/payflow_gst?schema=public"
    PORT=5000
    JWT_SECRET="your_jwt_signing_secret_key"
    JWT_REFRESH_SECRET="your_jwt_refresh_secret_key"
@@ -160,6 +161,7 @@ erDiagram
    ```bash
    npm run dev
    ```
+
 
 ### 2. Setup Frontend
 1. Navigate to the frontend directory:
@@ -184,7 +186,9 @@ erDiagram
 * **Root Directory**: `backend`
 * **Build Command**: `npm install --production=false && npx prisma generate && npx prisma migrate deploy && npm run build`
 * **Start Command**: `npm start`
-* Configure environment variables on Render corresponding to your production PostgreSQL connection.
+* Configure the following environment variables on Render:
+  * `DATABASE_URL`: Your pooled PostgreSQL connection URL (e.g., port 6543 with `?pgbouncer=true&connection_limit=1`).
+  * `DIRECT_URL`: Your direct/session PostgreSQL connection URL (e.g., port 5432).
 
 ### Frontend (Deployed on Vercel)
 * **Root Directory**: `frontend`
