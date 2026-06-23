@@ -1,7 +1,7 @@
 # PayFlow GST 💼
 
 **Live Application**: [https://payflow-gst.vercel.app/](https://payflow-gst.vercel.app/)  
-**Backend API**: [https://payflow-gst-backend.onrender.com](https://payflow-gst-backend.onrender.com)
+**Backend API**: [https://payflow-gst-backend.onrender.com](https://payflow-gst-backend.onrender.com) *(Note: Since the backend is hosted on Render's free tier, the initial request may take up to a minute to spin up if the service has been inactive and gone cold.)*
 
 **PayFlow GST** is a multi-tenant, role-based SaaS billing and receivable tracking platform engineered specifically for Indian SMEs. It enables businesses to generate fully GST-compliant tax invoices, perform customer aging analysis, track receipts, log audit events, and export tax logs.
 
